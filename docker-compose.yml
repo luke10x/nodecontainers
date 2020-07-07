@@ -24,3 +24,19 @@ services:
         http-server
     ports:
       - "8080:8080"
+
+  webpack:
+    image: node
+    volumes:
+      - "./webpack:/mnt/webpack"
+    working_dir: "/mnt/webpack"
+    entrypoint: "/bin/bash -c"
+    command:
+      - |
+        npm start || (\
+          echo "Webpack failed, container is up though" && \
+          tail -f /dev/null \
+        )
+    ports:
+      - 4444:4444
+    
