@@ -12,3 +12,15 @@ services:
     ports:
       - 6006:6006
     
+  http-server:
+    build:
+      context: "./http-server"
+    volumes:
+      - "./public:/mnt/public"
+    working_dir: "/mnt/public"
+    entrypoint: "/bin/bash -c"
+    command:
+      - |
+        http-server
+    ports:
+      - "8080:8080"
