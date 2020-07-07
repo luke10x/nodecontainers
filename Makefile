@@ -26,6 +26,9 @@ install: install-http-server install-storybook install-webpack
 into-http-server:
 	docker-compose exec http-server bash
 
+into-sandbox:
+	docker-compose run --rm sandbox
+
 into-storybook:
 	docker-compose exec storybook bash
 

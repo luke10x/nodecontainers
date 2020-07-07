@@ -1,5 +1,12 @@
 version: "3.7"
 services:
+  sandbox:
+    image: node
+    volumes:
+      - "./sandbox:/mnt/sandbox"
+    working_dir: "/mnt/sandbox"
+    entrypoint: "/bin/bash"
+
   storybook:
     image: node
     volumes:
