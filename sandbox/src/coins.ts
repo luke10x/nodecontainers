@@ -1,111 +1,129 @@
-export const twelveCoinsProblem = (weights: Array<number>) => {
+interface Coin {
+    index: number;
+    letter: String;
+    weight: number;
+}
 
-    const results: Array<Array<number>> = [
-        [], [], [], [], [], [],
-        [], [], [], [], [], []
-    ];
-
-    const labels = [
-        {id:  0, digits: [0, 1, 1]},
-        {id:  1, digits: [0, 1, 2]},
-        {id:  2, digits: [0, 2, 1]},
-        {id:  3, digits: [0, 2, 2]},
-        {id:  4, digits: [1, 0, 1]},
-        {id:  5, digits: [1, 0, 2]},
-        {id:  6, digits: [1, 1, 0]},
-        {id:  7, digits: [1, 2, 0]},
-        {id:  8, digits: [2, 0, 1]},
-        {id:  9, digits: [2, 0, 2]},
-        {id: 10, digits: [2, 1, 0]},
-        {id: 11, digits: [2, 2, 0]},
-    ];// |  |  |
-      // |  |  +- Third weighting plate
-      // |  +---- Second weighting plate
-      // +------- First weighting plate
-
-    interface ScaleResult {
-        winners: Array<number>;
-        loosers: Array<number>;
-        equals: Array<number>;
-    };
-
-    const scale = (weighing: number): ScaleResult => {
-        
-        const plate0 = labels
-            .filter(label => label.digits[weighing] === 0)
-            .map(label => label.id);
-            
-        const plate1 = labels
-            .filter(label => label.digits[weighing] === 1)
-            .map(label => label.id)
-        
-        const plate2 = labels
-            .filter(label => label.digits[weighing] === 2)
-            .map(label => label.id);
-
-
-        const plateWeight1 = plate1.reduce((acc, id) => { 
-            return acc + weights[id];
-        }, 0);
-
-        const plateWeight2 = plate2.reduce((acc, id) => { 
-            return acc + weights[id];
-        }, 0);
-
-
-        if (plateWeight1 > plateWeight2) {
-            return { winners: plate1, loosers: plate2, equals: plate0}
-        }
-        
-        if (plateWeight1 < plateWeight2) {
-            return { winners: plate2, loosers: plate1, equals: plate0}
-        }
-        
-        return { winners: [], loosers: [], equals: [...plate1, ...plate2]};
+type ScaleResult = "<" | ">" | "=";
+const right = (res: ScaleResult) => res == "<";
+const left = (res: ScaleResult) => res == ">";
+const equal = (res: ScaleResult) => res == "=";
+const scale = (plate1: Array<Coin>, plate2: Array<Coin>): ScaleResult => {
+    
+    const weight1 = plate1.reduce((acc, coin) => acc + coin.weight, 0);
+    const weight2 = plate2.reduce((acc, coin) => acc + coin.weight, 0);
+    let result: ScaleResult = "=";
+    if (weight1 > weight2) {
+        result = ">";
+    }
+    if (weight1 < weight2) {
+        result = "<";
     }
 
-    const weighing0 = scale(0);
-    weighing0.winners.forEach(id => {
-        results[id].push(1);
-    })
-    weighing0.loosers.forEach(id => {
-        results[id].push(-1);
-    })
-    weighing0.equals.forEach(id => {
-        results[id].push(0);
-    })
+    // console.log(
+    //     `Weighing ${plate1.reduce((acc, coin) => acc + coin.letter, "")}` +
+    //     ` ${result} ${plate2.reduce((acc, coin) => acc + coin.letter, "")}`
+    // );
 
-    const weighing1 = scale(1);
-    weighing1.winners.forEach(id => {
-        results[id].push(1);
-    })
-    weighing1.loosers.forEach(id => {
-        results[id].push(-1);
-    })
-    weighing1.equals.forEach(id => {
-        results[id].push(0);
-    })
+    return result;
+};
 
-    const weighing2 = scale(2);
-    weighing2.winners.forEach(id => {
-        results[id].push(1);
-    })
-    weighing2.loosers.forEach(id => {
-        results[id].push(-1);
-    })
-    weighing2.equals.forEach(id => {
-        results[id].push(0);
-    })
+export const twelveCoinsProblem = (weights: Array<number>): Coin | undefined => {
+    const coins = weights.map((weight, index) => {
+        return { index, letter: String.fromCharCode(97 + index), weight };
+    });
+    const [a, b, c, d, e, f, g, h, i, j, k, l] = coins;
 
-    console.log(results
-        // .filter(rewards => rewards.find((reward) => reward === 0) === undefined)
-        // .map(rewards => rewards.
-            // reduce(
-            //     (sum: number, reward: number) => sum + reward,
-            //     0
-            // )
-        // )
-    );
-    
+    const r1 = scale([a, b, c, d], [e, f, g, h]);
 
+    if (equal(r1)) {
+
+        const d2 = scale([a, b, c], [i, j, k]);
+        if (equal(d2)) {
+            const r3 = scale([a], [l]);
+            if (equal(r3)) return undefined;
+            else return l; // + or -
+        }
+        if (left(d2)) {
+            // abcd=efgh && abc>ijk
+            // ijk-
+            const r3 = scale([j], [k]);
+            if (equal(r3)) return i; // -
+            if (left(r3)) return k; // -
+            if (right(r3)) return j; // -
+        }
+        if (right(d2)) {
+            // abcd=efgh && abc<ijk
+            // ijk+
+            const r3 = scale([j], [k]);
+            if (equal(r3)) return i; // +
+            if (right(r3)) return k; // +
+            if (left(r3))  return j; // +
+        }
+    }
+
+    if (left(r1)) {
+
+        const r2 = scale([a, b, c, e], [d, i, j, k]);
+        if (equal(r2)) {
+            
+            // abcd>efgh && abce = dijk
+            // removed fgh may be still -
+            const r3 = scale([f], [g]);
+            if (left(r3))  return g; // -
+            if (right(r3)) return f; // -
+            if (equal(r3)) return h; // -
+        }
+        if (left(r2)) {
+
+            // abcd>efgh && abce > dijk
+            // remaining abc may be still +
+            const r3 = scale([a], [b]);
+            if (left(r3))  return a; // + 
+            if (right(r3)) return b; // +
+            if (equal(r3)) return c; // + 
+        }
+        if (right(r2)) {
+            
+            // abcd>efgh && abce < dijk
+            // d+ or e- 
+            const r3 = scale([d], [i]);
+            if (left(r3))  return d; // + 
+            if (right(r3)) throw new Error("d-");
+            if (equal(r3)) return e; // -
+        }
+    }
+
+    if (right(r1)) {
+        const r2 = scale([a, b, c, e], [d, i, j, k]); 
+        if (equal(r2)) {
+            // abcd < efgh && abce = dijk
+            // fgh are possbly heavier still, but which?
+            // weight 2 of them            
+            const r3 = scale([f], [g]); 
+            if (right(r3)) return g;//+
+            if (left(r3))  return f; // +
+            if (equal(r3)) return h; // + // If those 2 are equal, then this is heavier
+        }
+                
+        if (right(r2)) {
+            // abcd < efgh && abce < dijk 
+            // abc is possibly lighter still, but which?
+            // weight 2 of them
+            const r3 = scale([a], [b]); 
+            if (equal(r3)) return c; // -
+            if (right(r3)) return a; // -
+            if (left(r3))  return b; // -
+        }
+        if (left(r2)) {
+            // abcd < efgh && abce > dijk
+            // either e+ or d-
+            const d3 = scale([i], [e]); 
+            if (equal(d3)) return d; // -
+            if (right(d3)) return e; // +
+            if (left(d3))  throw new Error("e is + or =");
+        }
+    }
+
+    throw Error("Should never reach this point");
 }
