@@ -1,0 +1,261 @@
+<%- include("slides.svg")%>
+
+<!-- <input id="stage-input" /> -->
+<style>
+  body > svg {
+    width: 100%;
+  }
+
+  @keyframes hideshow {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    65% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  @keyframes fromLeft {
+    from {
+      transform: translatex(-100px);
+    }
+    to {
+      transform: translatex(none)
+    }
+  }
+
+  @keyframes fromRight {
+    from {
+      transform: translatex(100px);
+    }
+    to {
+      transform: translatex(none)
+    }
+  }
+
+  @keyframes appear {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes dottedTrain {
+    0% {
+
+      stroke-dasharray: 5;
+      stroke-dashoffset: 20;  
+    }
+    100% {
+      stroke-dasharray: 5;
+      stroke-dashoffset: 0; 
+    }
+  }
+
+  #pc-border,
+  #lukes-pc,
+  #lukes-fs,
+  #initial-taxx-content,
+  #container-border,
+  #container-title,
+  #container-fs,
+  #blue-dotted-border,
+  #red-dotted-border,
+  #container-border-small,
+  #container-border-bottom,
+  #mount-line,
+  #extended-temp-content,
+  #app-folder
+  {
+    opacity: 0;
+  }
+
+  #pc-border.on,
+  #lukes-pc.on,
+  #lukes-fs.on,
+  #initial-taxx-content.on,
+  #container-border.on,
+  #container-title.on,
+  #container-fs.on,
+  #blue-dotted-border.on,
+  #red-dotted-border.on,
+  #mount-line.on,
+  #app-folder.on
+  {
+    opacity: 1;
+    animation: appear 2s ease;
+  }
+
+  #container-border-small.on,
+  #container-border-bottom.on,
+  #extended-temp-content.on
+  {
+    opacity: 1;
+  }
+
+  #pc-border,#container-border {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+
+  #pc-border.on, #container-border.on {
+    transition: 1.5s;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;    
+  }
+
+  #mountpoint-arrow, #project-root-arrow, #app-arrow {
+    opacity: 0;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+  #mountpoint-arrow.on, #project-root-arrow.on, #app-arrow.on {
+    opacity: 1 ;
+
+    transition: .3s;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 0;    
+  }
+
+  #initial-temp-content, #full-taxx-content {
+    opacity: 0;
+  }
+
+  #initial-temp-content.on {
+    opacity: 1;
+    animation: fromLeft .6s steps(24, end);
+  }
+
+  #full-taxx-content.on {
+    opacity: 1;
+    animation: fromRight .6s steps(24, end);
+  }
+
+  #container-border-bottom
+  {
+    stroke-opacity: 0;
+  }
+  #container-border-bottom.on
+  {
+    stroke-opacity: 1;
+    animation: dottedTrain 1s linear infinite;
+  }
+</style>
+<script src="/slide-utils.js"></script>
+
+<script>
+const stageInput = document.getElementById('stage-input');
+
+const pcBorder = $("pc-border");
+const lukesPc = $('lukes-pc');
+const lukesFs = $('lukes-fs');
+const initialTaxxContent = $('initial-taxx-content');
+const containerBorder = $('container-border');
+const containerTitle = $('container-title');
+const containerFs = $('container-fs');
+const mountpointArrow = $('mountpoint-arrow');
+const projectRootArrow = $('project-root-arrow');
+const initialTempContent = $('initial-temp-content');
+const containerBorderSmall = $('container-border-small');
+const containerBorderBottom = $('container-border-bottom');
+const mountLine = $('mount-line');
+const extendedTempContent = $('extended-temp-content');
+const appFolder = $('app-folder');
+const fullTaxxContent = $('full-taxx-content');
+const appArrow = $('app-arrow');
+
+let stage = 0;
+document.addEventListener('keypress', handleKeypress);
+
+function handleKeypress(e) {
+  stage++;
+  if (stage === 1) {
+    pcBorder.classList.add("on");
+    lukesPc.classList.add("on");
+  }
+
+  if (stage === 2) {
+    lukesFs.classList.add("on");
+  }
+
+  if (stage === 3) {
+    projectRootArrow.classList.add("on");
+  }
+
+  if (stage === 4) {
+    projectRootArrow.classList.remove("on");
+    initialTaxxContent.classList.add("on");
+  }
+
+  if (stage === 5) {
+    containerBorder.classList.add("on");
+    containerTitle.classList.add("on");
+  }
+
+  if (stage === 6) {
+    containerFs.classList.add("on");
+  }
+
+  if (stage === 7) {
+    mountpointArrow.classList.add("on");
+  }
+
+  if (stage === 8) {
+    mountpointArrow.classList.remove("on");
+  }
+
+  if (stage === 9) {
+    initialTempContent.classList.add("on");
+    initialTaxxContent.classList.remove("on");
+    mountLine.classList.add("on");
+  }
+
+  if (stage === 10) {
+    containerBorderSmall.classList.add("on"); 
+    containerBorderBottom.classList.add("on"); 
+    containerBorder.classList.remove("on"); 
+  }
+
+  if (stage === 11) {
+    initialTempContent.classList.remove("on");
+    extendedTempContent.classList.add("on");
+  }
+
+  if (stage === 12) {
+    appFolder.classList.add("on");
+  }
+
+  if (stage === 13) {
+    containerBorderSmall.classList.remove("on");
+    containerBorderBottom.classList.remove("on");
+    containerFs.classList.remove("on");
+    containerTitle.classList.remove("on");
+  }
+
+  if (stage === 14) {
+    fullTaxxContent.classList.add("on");
+    mountLine.classList.remove("on");
+    extendedTempContent.classList.remove("on");
+    appFolder.classList.remove("on");
+  }
+
+  if (stage === 15) {
+    appArrow.classList.add("on");
+  }
+
+  if (stage === 16) {
+    appArrow.classList.remove("on");
+  }
+
+  if (stage > 16) {
+    stage = 0;
+    pcBorder.classList.remove("on");
+    lukesPc.classList.remove("on");
+    lukesFs.classList.remove("on");
+    initialTaxxContent.classList.remove('on')
+    containerBorder.classList.remove("on");
+    containerTitle.classList.remove("on");
+    containerFs.classList.remove("on");
+    mountpointArrow.classList.remove("on");
+    initialTempContent.classList.remove("on");
+    fullTaxxContent.classList.remove("on");
+  }
+  stageInput.value = stage;
+} 
+</script>
