@@ -32,6 +32,22 @@ services:
     ports:
       - "8080:8080"
 
+  express:
+    image: "node"
+    volumes:
+      - "./express:/mnt/express"
+      - "./public:/mnt/public"
+    working_dir: "/mnt/express"
+    entrypoint: "/bin/bash -c"
+    command:
+      - |
+        npm start || (\
+          echo "Webpack failed, container is up though" && \
+          tail -f /dev/null \
+        )
+    ports:
+      - "8080:8080"
+
   webpack:
     image: node
     volumes:
