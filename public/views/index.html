@@ -1,4 +1,91 @@
-hello
+
+<%- include("include.html")%>
+<%- include("slides.svg")%>
 <%- include("include.html")%>
 <a href="readme.txt">readme</a>
-end
+<style>
+
+  #docker-container {
+    /* visibility: hidden; */
+    animation: hideshow 2s ease infinite;
+  }
+
+  #docker-group {
+    opacity: 0;
+  }
+
+  #docker-group.on {
+    opacity: 1;
+    animation: appear 2s ease ;
+  }
+
+  @keyframes hideshow {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    65% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+
+  @keyframes appear {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  #pc-border {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+
+  #pc-border.on {
+    transition: 1.5s;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;    
+  }
+</style>
+<script>
+
+const putStylesToClass = (element) => {
+
+  const createClassFromStyle = (styleStr) => {
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    const className =  "cl_"+Math.random().toString(36).substring(7);
+    console.log(className)
+    style.innerHTML = '.'+className+' { '+styleStr+'}';
+    document.getElementsByTagName('head')[0].appendChild(style);
+    return className;
+  }
+
+  const styleStr = element.getAttribute("style");
+  element.removeAttribute("style");
+  const className = createClassFromStyle(styleStr);
+  element.classList.add(className);
+}
+
+
+
+
+
+const dockerGroup = document.getElementById('docker-group');
+
+document.addEventListener('keypress', handleKeypress);
+
+let stage = 0;
+function handleKeypress(e) {
+  
+  stage++;
+  if (stage === 1) dockerGroup.classList.add("on");
+  if (stage === 2) pcBorder.classList.add('on')
+  if (stage> 5) {
+    stage = 0;
+    dockerGroup.classList.remove("on");
+    pcBorder.classList.remove('on')
+  }
+}
+
+
+const pcBorder = document.getElementById("pc-border");
+putStylesToClass(pcBorder);
+
+</script>
