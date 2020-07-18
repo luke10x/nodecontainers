@@ -1,0 +1,91 @@
+<%- include("monorepo-slides.svg")%>
+<script src="/slide-utils.js"></script>
+<style>
+  body > svg {
+    width: 100%;
+  }
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #title_a, #title_b,
+  #item_a1, #item_a2, #item_a3,
+  #item_b1, #item_b2, #item_b3
+  {
+    opacity: 0;
+  }
+
+
+  #title_a.on, #title_b.on,
+  #item_a1.on, #item_a2.on, #item_a3.on,
+  #item_b1.on, #item_b2.on, #item_b3.on
+  {
+    opacity: 1;
+    animation: appear 1s steps(10, end);
+    animation-timing-function: ease-in-out;
+  }
+</style>
+<script>
+
+  const a = $('title_a')
+  const a1 = $('item_a1')
+  const a2 = $('item_a2')
+  const a3 = $('item_a3')
+  const b = $('title_b')
+  const b1 = $('item_b1')
+  const b2 = $('item_b2')
+  const b3 = $('item_b3')
+
+  const slide = slideControl();
+
+  const handleKeypress = () => {
+    if (slide.isActive()) {
+      a.classList.add('on')
+    }
+    if (slide.isActive()) {
+      a1.classList.add('on')
+    }
+    if (slide.isActive()) {
+      a2.classList.add('on')
+    }
+    if (slide.isActive()) {
+      a3.classList.add('on')
+    }
+    if (slide.isActive()) {
+      b.classList.add('on')
+    }
+    if (slide.isActive()) {
+      b1.classList.add('on')
+    }
+    if (slide.isActive()) {
+      b2.classList.add('on')
+    }
+    if (slide.isActive()) {
+      b3.classList.add('on')
+    }
+
+    
+    if (slide.isActive()) {
+      a.classList.remove('on')
+      b.classList.remove('on')
+      a1.classList.remove('on')
+      b1.classList.remove('on')
+      a2.classList.remove('on')
+      b2.classList.remove('on')
+      a3.classList.remove('on')
+      b3.classList.remove('on')
+    }
+    slide.reset();
+  }
+
+  document.addEventListener('keypress', handleKeypress);
+  setInterval(handleKeypress, 1500);
+</script>
+

@@ -73,13 +73,17 @@ And this is basically what is a monorepo...
 
 It is important to understand, that there are 2 different types of Monorepo.
 
+Colossal monorepo and Platform monorepo.
+
+I would say when you hear this word - "monorepo",
+it most likelly refferst to the Colossal monorepo...
+
 You may have heard that some big companies like google, facebook or twitter,
 use their gigantic monorepos to store all their code and digital assets, what not. 
 
-Sometimes it is called “Colosal Monorepo”
 
 We are talking about massive amounts of storage,
-billions of lines of code, they estimate that at google their repository takes more than 80 gigabytes,
+billions of lines of code, they estimate that at google their repository takes more than 80 terabytes,
 and their build pipelines are more complex than a gas works factory. 
 
 They have good reasons to use this setup
@@ -88,11 +92,15 @@ it would not be a practical solution,
 In fact it could be overkill. 
 
 I think it was Open Source ways of development and Package managers that pushed
-the rest of the software industry into using a somewhat completely opposite approach. 
+the rest of the software industry into using a somewhat completely opposite approach.
+Where they don't use monorepo at all, 
+in other words they use polyrepo.
+
 Where every component, even a smallest library, has a separate repository for their code.
 Which results in having your code spread across so many different repositories.
 Which sometimes, also results in complexity, and leads to dependency hell situations.
-"Hello world" react application has like a 1000 dependent libraries... 
+"Hello world" react application has like a 1000 dependent libraries...
+Many companies also follow this open source pattern for their internal products 
 
 Lately, it has become a trend to use *platform monorepos*.
 Where essentially code that runs together is kept together.
