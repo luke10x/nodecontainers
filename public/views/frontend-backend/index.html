@@ -1,0 +1,125 @@
+<%- include("frontend-backend-slides.svg")%>
+<script src="/slide-utils.js"></script>
+<style>
+  body > svg {
+    width: 100%;
+  }
+  *, html {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  @keyframes appearAndSlideAway {
+    0% {
+      opacity: 0;
+    }
+
+    10% {
+      opacity: 1;
+
+    }
+    40% {
+      transform: translatex(0px);
+
+    }
+    50% {
+      transform: translatex(-500px);
+    }
+    100% {
+      transform: translatex(-500px);
+    }
+  }
+
+  @keyframes slideIn {
+    0% {
+      transform: translatex(500px);
+    }
+    100% {
+      transform: translatex(0px);
+    }
+  }
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #frontend, #backend, 
+  #react, #express,
+  #ts1, #ts2,
+  #docker1, #docker2 {
+    opacity: 0;
+  }
+  #frontend.on, #backend.on {
+    opacity: 1;
+    animation: slideIn 1s steps(10, end);
+    animation-timing-function: ease-in-out;
+  }
+  #react.on, #express.on,
+  #ts1.on, #ts2.on,
+  #docker1.on, #docker2.on
+  {
+    opacity: 1;
+    animation: appear 1s steps(10, end);
+    animation-timing-function: ease-in-out;
+  }
+
+</style>
+
+<script>
+
+  const frontend = $("frontend");
+  const backend = $("backend");
+  const react = $("react");
+  const express = $("express");
+  const ts1= $("ts1");
+  const ts2 = $("ts2");
+  const docker1= $("docker1");
+  const docker2 = $("docker2");
+
+  let stage = 0;
+  document.addEventListener('keypress', handleKeypress);
+
+  function handleKeypress(e) {
+    stage++;
+    if (stage === 1) {
+      frontend.classList.add("on");
+    }
+    if (stage === 2) {
+      react.classList.add("on");
+    }
+    if (stage === 3) {
+      backend.classList.add("on");
+    }
+    if (stage === 4) {
+      express.classList.add("on");
+    }
+
+    if (stage === 5) {
+      ts1.classList.add("on");
+      ts2.classList.add("on");
+    }
+
+    if (stage === 6) {
+      react.classList.remove("on");
+      express.classList.remove("on");
+      ts1.classList.remove("on");
+      ts2.classList.remove("on");
+      docker1.classList.add("on");
+      docker2.classList.add("on");
+
+    }
+    if (stage > 6) {
+      frontend.classList.remove("on");
+      backend.classList.remove("on");
+      docker1.classList.remove("on");
+      docker2.classList.remove("on");
+
+      stage = 0;
+    }
+  }
+</script>
