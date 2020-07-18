@@ -1,0 +1,65 @@
+<%- include("content-slides.svg")%>
+<script src="/slide-utils.js"></script>
+<style>
+  body > svg {
+    width: 100%;
+  }
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #monorepo, #react, #dockercompose, #express, #fetch {
+    opacity: 0;
+  }
+  #monorepo.on, #react.on, #dockercompose.on, #express.on, #fetch.on {
+    opacity: 1;
+    animation: appear 1s steps(10, end);
+    animation-timing-function: ease-in-out;
+  }
+</style>
+<script>
+  const monorepo = $('monorepo')
+  const react = $('react')
+  const dockerCompose = $('dockercompose')
+  const express = $('express')
+  const fetch = $('fetch')
+
+  const slide = slideControl();
+
+  const handleKeypress = () => {
+    if (slide.isActive()) {
+      monorepo.classList.add('on')
+    }
+    if (slide.isActive()) {
+      react.classList.add('on')
+    }
+    if (slide.isActive()) {
+      dockerCompose.classList.add('on')
+    }
+    if (slide.isActive()) {
+      express.classList.add('on')
+    }
+    if (slide.isActive()) {
+      fetch.classList.add('on')
+    }
+    if (slide.isActive()) {
+      monorepo.classList.remove('on')
+      react.classList.remove('on')
+      dockerCompose.classList.remove('on')
+      express.classList.remove('on')
+      fetch.classList.remove('on')
+    }
+    slide.reset();
+  }
+
+  document.addEventListener('keypress', handleKeypress);
+  setInterval(handleKeypress, 1500);
+</script>
+

@@ -20,3 +20,22 @@ const $ = (elementId) => {
   putStylesToClass(element);
   return element;
 };
+
+const slideControl = () => {
+  let active = 1;
+  let current = 0;
+  return {
+    isActive: () => {
+      current++;
+      return active == current;
+    },
+    reset: () => {
+      console.log("active slide: ", active);
+      if (active >= current) {
+        active = 0;
+      }
+      current = 0;
+      active++
+    }
+  }
+}
