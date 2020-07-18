@@ -1,8 +1,15 @@
 <%- include("monorepo-slides.svg")%>
 <script src="/slide-utils.js"></script>
 <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
   body > svg {
     width: 100%;
+    height: 100%;
   }
 
   @keyframes appear {
@@ -22,7 +29,6 @@
     opacity: 0;
   }
 
-
   #title_a.on, #title_b.on,
   #item_a1.on, #item_a2.on, #item_a3.on,
   #item_b1.on, #item_b2.on, #item_b3.on
@@ -33,6 +39,7 @@
   }
 </style>
 <script>
+  window.onload = fixSvgSize;
 
   const a = $('title_a')
   const a1 = $('item_a1')
@@ -71,7 +78,6 @@
       b3.classList.add('on')
     }
 
-    
     if (slide.isActive()) {
       a.classList.remove('on')
       b.classList.remove('on')

@@ -1,0 +1,142 @@
+<%- include("intro-slides.svg")%>
+<script src="/slide-utils.js"></script>
+<style>
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  body > svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes appearAndSlideAway {
+    0% {
+      opacity: 0;
+    }
+
+    10% {
+      opacity: 1;
+
+    }
+    90% {
+      transform: translatex(0px);
+
+    }
+    100% {
+      transform: translatex(-500px);
+    }
+  }
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+
+    }
+  }
+
+  @keyframes slideAway {
+    0% {
+      opacity: 1;
+      transform: translatex(0px);
+    }
+    100% {
+      opacity: 1;
+      transform: translatex(-500px);
+    }
+  }
+  @keyframes slideIn {
+    0% {
+      opacity: 1;
+      transform: translatex(500px);
+    }
+    100% {
+      opacity: 1;
+      transform: translatex(0px);
+    }
+  }
+  @keyframes slideInAndOut {
+    0% {
+      transform: translatex(500px);
+    }
+    10% {
+      transform: translatex(0px);
+    }
+    90% {
+      transform: translatex(0px);
+    }
+    100% {
+      transform: translatex(-500px);
+    }
+  }
+
+  #portrait, #luke10x, #tenxdeveloper,
+  #portrait.out, #luke10x.out, #tenxdeveloper.out
+  {
+    opacity: 0;
+  }
+
+  #portrait.on, #luke10x.on {
+    opacity: 1;
+    animation: appear 1s steps(10, end);
+    animation-timing-function: ease-in-out;
+  }
+  #portrait.on.out, #luke10x.on.out, #tenxdeveloper.on.out {
+    opacity: 0;
+    animation: slideAway .5s steps(5, end);
+    animation-timing-function: ease-in-out;
+  }
+
+  #tenxdeveloper.on {
+    opacity: 1;
+    animation: slideIn .5s steps(5, end);
+    animation-timing-function: ease-in-out;
+  }
+</style>
+<script>
+  window.onload = fixSvgSize;
+
+  const luke10x = $("luke10x");
+  const portrait = $("portrait");
+  const developer = $("tenxdeveloper");
+
+  const slide = slideControl();
+
+  const handleKeypress = () => {
+    if (slide.isActive()) {
+      luke10x.classList.add('on')
+      portrait.classList.add('on')
+    }
+    if (slide.isActive()) {}
+    if (slide.isActive()) {
+      luke10x.classList.add('out')
+      portrait.classList.add('out')
+    }
+    if (slide.isActive()) {
+      developer.classList.add('on')
+    }
+    if (slide.isActive()) {}
+    if (slide.isActive()) {
+      developer.classList.add('out')
+    }
+    if (slide.isActive()) {
+      developer.classList.remove('on')
+      developer.classList.remove('out')
+      luke10x.classList.remove('on')
+      portrait.classList.remove('on')
+      luke10x.classList.remove('out')
+      portrait.classList.remove('out')
+    }
+    slide.reset();
+  }
+
+  document.addEventListener('keypress', handleKeypress);
+  setInterval(handleKeypress, 1500);
+</script>

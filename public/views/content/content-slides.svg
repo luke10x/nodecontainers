@@ -617,8 +617,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.38"
-     inkscape:cx="703.19222"
-     inkscape:cy="336.50891"
+     inkscape:cx="616.35011"
+     inkscape:cy="323.35102"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -684,11 +684,11 @@
            sodipodi:role="line" /></text>
     </g>
     <rect
-       style="fill:#fcea2b;fill-opacity:1;stroke:none;stroke-width:1.92299998;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:1.92299989, 1.92299989000000005;stroke-dashoffset:0;stroke-opacity:0.97647059"
+       style="fill:#fcea2b;fill-opacity:1;stroke:none;stroke-width:1.92299998;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:1.92299989, 1.92299989;stroke-dashoffset:0;stroke-opacity:0.97647059"
        id="rect1979"
        width="338.66666"
        height="190.5"
-       x="0.69627213"
+       x="0"
        y="106.5"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
@@ -1485,7 +1485,7 @@
            id="tspan1094"
            x="30.890085"
            y="202.38782"
-           style="fill:#3f3f3f;fill-opacity:1;stroke-width:0.15319546">3. DOCKER-COMPOSE</tspan><tspan
+           style="fill:#3f3f3f;fill-opacity:1;stroke-width:0.15319546">3. DOCKER COMPOSE</tspan><tspan
            sodipodi:role="line"
            id="tspan1098"
            x="30.890085"

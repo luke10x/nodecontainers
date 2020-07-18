@@ -617,7 +617,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.38733146"
-     inkscape:cx="818.34581"
+     inkscape:cx="722.82039"
      inkscape:cy="500.06982"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -659,11 +659,11 @@
      id="layer1"
      transform="translate(0,-106.5)">
     <rect
-       style="fill:#fcea2b;fill-opacity:1;stroke:none;stroke-width:1.92299998;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:1.92299989, 1.92299989000000005;stroke-dashoffset:0;stroke-opacity:0.97647059"
+       style="fill:#fcea2b;fill-opacity:1;stroke:none;stroke-width:1.92299998;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:1.92299989, 1.92299989;stroke-dashoffset:0;stroke-opacity:0.97647059"
        id="rect1979"
        width="338.66666"
        height="190.5"
-       x="0.69627213"
+       x="0"
        y="106.5"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />

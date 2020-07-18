@@ -1,8 +1,16 @@
 <%- include("content-slides.svg")%>
 <script src="/slide-utils.js"></script>
 <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   body > svg {
     width: 100%;
+    height: 100%;
   }
 
   @keyframes appear {
@@ -25,6 +33,8 @@
   }
 </style>
 <script>
+  window.onload = fixSvgSize;
+
   const monorepo = $('monorepo')
   const react = $('react')
   const dockerCompose = $('dockercompose')

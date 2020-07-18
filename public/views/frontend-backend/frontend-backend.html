@@ -1,12 +1,16 @@
 <%- include("frontend-backend-slides.svg")%>
 <script src="/slide-utils.js"></script>
 <style>
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
   body > svg {
     width: 100%;
-  }
-  *, html {
-    margin: 0px;
-    padding: 0px;
+    height: 100%;
   }
 
   @keyframes appearAndSlideAway {
@@ -71,6 +75,7 @@
 </style>
 
 <script>
+  window.onload = fixSvgSize;
 
   const frontend = $("frontend");
   const backend = $("backend");
@@ -83,6 +88,7 @@
 
   let stage = 0;
   document.addEventListener('keypress', handleKeypress);
+  setInterval(handleKeypress, 1500);
 
   function handleKeypress(e) {
     stage++;

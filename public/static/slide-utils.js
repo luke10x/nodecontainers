@@ -41,7 +41,9 @@ const slideControl = () => {
 }
 
 fixSvgSize = () => {
-  var anchors = document.getElementById('svg').getElementsByTagName('a');
+  var anchors = document
+  // .getElementById('svg')
+  .getElementsByTagName('svg');
   for (var i=0; i<anchors.length; i++){
     anchors[i].setAttribute('preserveAspectRatio', 'xMidYMin slice');
   }
