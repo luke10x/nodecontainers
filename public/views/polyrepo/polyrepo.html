@@ -1,0 +1,93 @@
+<%- include("polyrepo-slides.svg")%>
+<script src="/slide-utils.js"></script>
+<style>
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  body > svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #polyrepo, #repository,
+  #other_repos, #dependencies, #package_a,
+  #monorepo, #monorepo_with_packages
+  {
+    opacity: 0;
+  }
+
+  #polyrepo.on, #repository.on,
+  #other_repos.on, #dependencies.on, #package_a.on,
+  #monorepo.on, #monorepo_with_packages.on
+  {
+    opacity: 1;
+    animation: appear 1s steps(10, end);
+    animation-timing-function: ease-in-out;
+  }
+</style>
+<script>
+  window.onload = fixSvgSize;
+
+  const polyrepo = $('polyrepo')
+  const repository = $('repository')
+  const packageA = $('package_a')
+  const otherRepos = $('other_repos')
+  const dependencies = $('dependencies')
+  const monorepo = $('monorepo')
+  const monorepoWithPackages = $('monorepo_with_packages')
+
+  const slide = slideControl();
+
+  const handleKeypress = () => {
+    if (slide.isActive()) {
+      polyrepo.classList.add('on')
+    }
+    if (slide.isActive()) {
+      repository.classList.add('on')
+    }
+    if (slide.isActive()) {
+      packageA.classList.add('on')
+    }
+    if (slide.isActive()) {
+      otherRepos.classList.add('on')
+    }
+    if (slide.isActive()) {
+      dependencies.classList.add('on')
+    }
+    if (slide.isActive()) {
+      monorepo.classList.add('on')
+    }
+    if (slide.isActive()) {
+      monorepoWithPackages.classList.add('on')
+    }
+    
+    if (slide.isActive()) {
+      polyrepo.classList.remove('on')
+      packageA.classList.remove('on')
+      repository.classList.remove('on')
+      otherRepos.classList.remove('on')
+      dependencies.classList.remove('on')
+      monorepo.classList.remove('on')
+      monorepoWithPackages.classList.remove('on')
+    }
+    slide.reset();
+  }
+
+  document.addEventListener('keypress', handleKeypress);
+  setInterval(handleKeypress, 1500);
+</script>
+
