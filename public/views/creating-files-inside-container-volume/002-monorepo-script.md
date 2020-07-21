@@ -70,42 +70,78 @@ repository on github to store all the code.
 And this is basically what is a monorepo...
 
 ## 1. monorepo
+### 1.1 Polyrepo
+So what is Monorepo, well it is opposite to Polyrepo.
+Ok, what is polyrepo then!?
+
+Polyrepo is when your code is stored in multiple different repositories.
+
+
+Take this example, imagine we have a repository, which only contains package A.
+
+Then we have packages B, C and D, and they also live in their own repositories.
+
+And even if package A, depends on those other packages,
+in a way it is impossible to build package A without code in packages B, C and D,
+then the dependencies have to be fetched separatelly.
+
+I think it was Open Source ways of development
+and especially Package managers created this culture
+of keeping each package in its own repository.
+
+Where every component, even a smallest library,
+has a separate repository for their code.
+Which results in having your code spread across so many different places.
+Which sometimes, also results in complexity,
+and leads to dependency hell situations.
+"Hello world" react application has like a 1000 dependent libraries...
+Most of the software companies also follow this open source pattern
+for their internal products.
+
+### 1.2 Monorepo
+However, latelly, Monorepo is getting more and more popular.
+Essentially monorepo is a repository
+which contains your software with all its dependencies.
+When you clone a Monorepo, you dont have to look anywhere else,
+you have all the code that you need to build and run your project.
+
+
+#### 1.2.1 Colossal Monorepo
 
 It is important to understand, that there are 2 different types of Monorepo.
 
-Colossal monorepo and Platform monorepo.
-
-I would say when you hear this word - "monorepo",
-it most likelly refferst to the Colossal monorepo...
+First type is a Colossal monorepo
 
 You may have heard that some big companies like google, facebook or twitter,
-use their gigantic monorepos to store all their code and digital assets, what not. 
-
+use their gigantic monorepos to store all their code and digital assets, what not.
 
 We are talking about massive amounts of storage,
-billions of lines of code, they estimate that at google their repository takes more than 80 terabytes,
-and their build pipelines are more complex than a gas works factory. 
+billions of lines of code,
+they estimate that at google their repository takes more than 80 terabytes,
+and their custom 
+build pipelines and version control systems
+that are designed to work at this scale,
+and yes, they are more complex than a gas works factory. 
 
-They have good reasons to use this setup
-But besides of these big players, for the rest of the industry
+Those big-tech companies have good reasons to use this setup
+But for the rest of the industry,
+people like us,
 it would not be a practical solution,
 In fact it could be overkill. 
 
-I think it was Open Source ways of development and Package managers that pushed
-the rest of the software industry into using a somewhat completely opposite approach.
-Where they don't use monorepo at all, 
-in other words they use polyrepo.
+And no Colossal monorepo, is not something I am suggesting to use.
 
-Where every component, even a smallest library, has a separate repository for their code.
-Which results in having your code spread across so many different repositories.
-Which sometimes, also results in complexity, and leads to dependency hell situations.
-"Hello world" react application has like a 1000 dependent libraries...
-Many companies also follow this open source pattern for their internal products 
+#### 1.2.2 Platform Monorepo
 
-Lately, it has become a trend to use *platform monorepos*.
-Where essentially code that runs together is kept together.
+Instead, I would like to talk about *platform monorepo*,
+which is becoming a new trend, these days.
 *This is the  type of a monorepo*
 *that I want to talk about in this video*.
+
+So in platform monorepo,
+code that runs together is kept together.
+Not all the code that you have,
+but only what is relevant for a specific project. 
 
 It can be convenient when you have a distributed application,
 especially in microservices, or shared libraries used from different packages.
@@ -115,10 +151,15 @@ It makes it easy to onboard new developers to a project,
 Allows refactoring across services with more confidence.
 And avoids version incompatibilities.
 
-So I hope now we are on the same page what
-I mean when I say "monorepo".
-So we can go ahead and start organizing our code one directory,
-containing multiple different products.
+So yes, what I want to show is
+how to setup a new Platform Monorepo.
+So we can go ahead and start organizing our code,
+inside one directory,
+containing multiple different packages.
+In this case is gonna be just two simple applications:
+A react frontend
+and a Node.js backend;
+both placed in one repositry.
 
 # React aplication
 
@@ -126,7 +167,7 @@ First we will start with a React application,
 because when you think about it, in case of TAXX,
 users are interacting with a web app.
 
-So to create a web application I  would normaly use 'npx create-react-application'
+So to create a web application I  would normaly use 'npx create-react-app'
 and yeah, of course I want to use typescript ere...
 
 but a-a-a, I said there is no node.js installed on this computer.
