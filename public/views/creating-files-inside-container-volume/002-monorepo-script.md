@@ -109,6 +109,8 @@ Where essentially code that runs together is kept together.
 
 It can be convenient when you have a distributed application,
 especially in microservices, or shared libraries used from different packages.
+
+If you have your entire stack in one place,
 It makes it easy to onboard new developers to a project,
 Allows refactoring across services with more confidence.
 And avoids version incompatibilities.

@@ -14,7 +14,7 @@
    viewBox="0 0 338.66666 190.50001"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="slides.svg">
   <defs
      id="defs2">
@@ -601,15 +601,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.78"
-     inkscape:cx="689.44707"
-     inkscape:cy="251.53965"
+     inkscape:cx="393.29322"
+     inkscape:cy="1301.4207"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="688"
-     inkscape:window-x="0"
-     inkscape:window-y="40"
+     inkscape:window-width="1848"
+     inkscape:window-height="1009"
+     inkscape:window-x="72"
+     inkscape:window-y="34"
      inkscape:window-maximized="1"
      inkscape:snap-global="false"
      inkscape:snap-bbox="true"
@@ -1047,13 +1047,6 @@
        d="m 157.23091,524.23625 v 47.58847 H 48.052086 v 53.39694 H 164.77709 V 608.1725 h 77.52066 v -83.93625 z"
        id="rect1048-6"
        inkscape:connector-curvature="0" />
-    <rect
-       style="opacity:1;fill:#00ccff;fill-opacity:1;stroke:#61b2e4;stroke-width:2.44053817;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1191"
-       width="43.890617"
-       height="36.282913"
-       x="-86.496666"
-       y="-23.888063" />
     <g
        id="container-fs"
        transform="translate(-0.59456929,-0.59456929)">
@@ -2157,5 +2150,126 @@
        id="app-arrow"
        d="m 170.40026,205.74841 -0.13865,25.71718 -15.1524,0.14539 1.36231,-0.69396 0.0949,3.53001 -4.6641,-2.54939 4.5126,-2.91569 0.0129,3.78228"
        style="fill:none;stroke:#d22f27;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       style="fill:#92d3f5;fill-opacity:1;stroke:none;stroke-width:4.21529865;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.97647059"
+       id="rect2176-8"
+       width="338.66666"
+       height="190.5"
+       x="-58.072643"
+       y="-180.539"
+       inkscape:export-filename="/home/luke/docker-create-app-cmd.png"
+       inkscape:export-xdpi="144"
+       inkscape:export-ydpi="144" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.46482086px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:'Roboto, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#1e50a0;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       x="53.685074"
+       y="27.139345"
+       id="text1406-31"><tspan
+         sodipodi:role="line"
+         x="53.685074"
+         y="27.139345"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.46482086px;font-family:Roboto;-inkscape-font-specification:'Roboto, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#1e50a0;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="tspan1618-6">GET THE SOURCE CODE:</tspan></text>
+    <g
+       id="g3799">
+      <text
+         id="text1406-3-8-3-3"
+         y="-136.75262"
+         x="-40.463612"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.70199299px;line-height:1.25;font-family:FreeMono;-inkscape-font-specification:'FreeMono, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:0.47674417;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="fill:#ffffff;fill-opacity:0.47674417;stroke-width:0"
+           y="-136.75262"
+           x="-40.463612"
+           id="tspan3554-9-9"
+           sodipodi:role="line">docker run --rm -it \</tspan><tspan
+           style="fill:#ffffff;fill-opacity:0.47674417;stroke-width:0"
+           y="-118.37513"
+           x="-40.463612"
+           id="tspan3556-4-0"
+           sodipodi:role="line">    -v &quot;$(pwd):/temp&quot; \</tspan><tspan
+           style="fill:#ffffff;fill-opacity:0.47674417;stroke-width:0"
+           id="tspan3564-8-8"
+           y="-99.997643"
+           x="-40.463612"
+           sodipodi:role="line">    --workdir &quot;/temp&quot; \</tspan><tspan
+           style="fill:#ffffff;fill-opacity:0.47674417;stroke-width:0"
+           y="-81.620148"
+           x="-40.463612"
+           id="tspan3558-1-8"
+           sodipodi:role="line">    node \</tspan><tspan
+           style="fill:#ffffff;fill-opacity:0.47674417;stroke-width:0"
+           y="-63.242661"
+           x="-40.463612"
+           id="tspan3560-2-5"
+           sodipodi:role="line">        npx create-react-app app \</tspan><tspan
+           style="fill:#ffffff;fill-opacity:0.47674417;stroke-width:0"
+           y="-44.86517"
+           x="-40.463612"
+           id="tspan3562-9-0"
+           sodipodi:role="line">            --template typescript</tspan></text>
+      <path
+         inkscape:connector-curvature="0"
+         id="path3632"
+         d="m -53.255874,-159.57585 182.833864,3.05289 4.07051,20.01335 12.55075,6.78419 3.39209,21.03098 2.37447,14.925213 -117.027242,-1.356839 1.356837,17.978099 22.72703,4.409723 183.173075,-3.052887 6.78419,14.925214 10.51549,27.47596 -244.569976,3.392096 -57.326388,-56.98718 z"
+         style="fill:#92d3f5;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         id="text1406-3-8"
+         y="-136.52185"
+         x="-40.504757"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.70201397px;line-height:1.25;font-family:FreeMono;-inkscape-font-specification:'FreeMono, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#1890ff;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           id="tspan3692"
+           sodipodi:role="line"
+           x="-40.504757"
+           y="-136.52185"> </tspan><tspan
+           id="tspan3694"
+           sodipodi:role="line"
+           x="-40.504757"
+           y="-118.14434">    </tspan><tspan
+           id="tspan3696"
+           sodipodi:role="line"
+           x="-40.504757"
+           y="-99.766823">    </tspan><tspan
+           id="tspan3698"
+           sodipodi:role="line"
+           x="-40.504757"
+           y="-81.389305">    </tspan><tspan
+           id="tspan3700"
+           sodipodi:role="line"
+           x="-40.504757"
+           y="-63.011784">        npx create-react-app app</tspan><tspan
+           id="tspan3702"
+           sodipodi:role="line"
+           x="-40.504757"
+           y="-44.634266">            --template typescript</tspan></text>
+      <text
+         id="text1406-3-8-3"
+         y="-137.09183"
+         x="-40.463612"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.70201397px;line-height:1.25;font-family:FreeMono;-inkscape-font-specification:'FreeMono, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e67a94;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           id="tspan3658"
+           sodipodi:role="line"
+           x="-40.463612"
+           y="-137.09183">docker run --rm -it </tspan><tspan
+           id="tspan3660"
+           sodipodi:role="line"
+           x="-40.463612"
+           y="-118.71432">    -v &quot;$(pwd):/temp&quot;</tspan><tspan
+           id="tspan3662"
+           sodipodi:role="line"
+           x="-40.463612"
+           y="-100.3368">    --workdir &quot;/temp&quot; </tspan><tspan
+           id="tspan3664"
+           sodipodi:role="line"
+           x="-40.463612"
+           y="-81.959282">    node </tspan><tspan
+           id="tspan3666"
+           sodipodi:role="line"
+           x="-40.463612"
+           y="-63.58176">       </tspan></text>
+    </g>
   </g>
 </svg>
