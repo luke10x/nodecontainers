@@ -1,0 +1,125 @@
+<%- include("taxx-slides.svg")%>
+<script src="/slide-utils.js"></script>
+<style>
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  body > svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes slideIn {
+    0% {
+      opacity: 1;
+      transform: translatex(-200px);
+    }
+    100% {
+      opacity: 1;
+      transform: translatex(0px);
+    }
+  }
+
+  @keyframes slideOut {
+    0% {
+      opacity: 1;
+      transform: translatex(0px);
+    }
+    100% {
+      opacity: 1;
+      transform: translatex(-200px);
+    }
+  }
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes disappear {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  #phone, #taxx, #application {
+    opacity: 0;
+  }
+
+  #phone.on {
+    opacity: 1;
+    animation: slideIn 1s steps(10, end);
+    animation-timing-function: ease-in-out;
+  }
+
+  #phone.on.out {
+    opacity: 0;
+    animation: slideOut 1s steps(10, end);
+    animation-timing-function: ease-in-out;
+  }
+
+  #taxx.on, #application.on {
+    opacity: 1;
+    animation: appear 1s steps(10, end);
+    animation-timing-function: ease-in-out;
+  }
+
+  #taxx.on.out, #application.on.out {
+    opacity: 0;
+    animation: disappear 1s steps(10, end);
+    animation-timing-function: ease-in-out;
+  }
+</style>
+
+<script>
+  window.onload = fixSvgSize;
+
+  const phone = $("phone");
+  const application = $("application");
+  const taxx = $("taxx");
+
+  let stage = 0;
+  document.addEventListener('keypress', handleKeypress);
+  setInterval(handleKeypress, 1500);
+
+  const slide = slideControl();
+
+  function handleKeypress(e) {
+    if (slide.isActive()) {
+      taxx.classList.add("on");
+      application.classList.add("on");
+      phone.classList.add("on");
+    }
+
+    if (slide.isActive()) {}
+
+    if (slide.isActive()) {
+      taxx.classList.add("out");
+      application.classList.add("out");
+      phone.classList.add("out");
+    }
+
+    if (slide.isActive()) {
+      taxx.classList.remove("out");
+      taxx.classList.remove("on");
+      application.classList.remove("out");
+      application.classList.remove("on");
+      phone.classList.remove("out");
+      phone.classList.remove("on");
+
+      stage = 0;
+    }
+    slide.reset();
+
+  }
+</script>
