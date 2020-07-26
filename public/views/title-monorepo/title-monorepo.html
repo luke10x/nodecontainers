@@ -1,5 +1,6 @@
 <%- include("title-monorepo-slides.svg")%>
-<script src="/slide-utils.js"></script>
+<script>
+</script>
 <style>
 
   html, body {
@@ -11,6 +12,17 @@
   body > svg {
     width: 100%;
     height: 100%;
+  }
+
+  @keyframes slideIn {
+    0% {
+      opacity: 1;
+      transform: translatex(200px);
+    }
+    100% {
+      opacity: 1;
+      transform: translatex(0px);
+    }
   }
 
   @keyframes appear {
@@ -34,12 +46,27 @@
     }
   }
 
-  #face, #luke,
-  #monorepo 
-  {
+  #face,
+  #luke,
+  #monorepo,
+  #react,
+  #compose,
+  #express,
+  #fetch {
     opacity: 0;
   }
 
+  #monorepo.on,
+  #react.on,
+  #compose.on,
+  #express.on,
+  #fetch.on
+  {
+    opacity: 1;
+    animation: slideIn .5s steps(10, end);
+    animation-timing-function: ease-in-out;
+  }
+   
   #luke.on {
     opacity: 1;
     animation: appear 1s steps(10, end);
@@ -55,16 +82,26 @@
   }
 </style>
 <script>
+<%- include("../../static/slide-utils.js")%>
+
   window.onload = fixSvgSize;
 
   const face = $('face')
   const luke = $('luke')
 
   const monorepo = $('monorepo')
+  const react = $('react')
+  const compose = $('compose')
+  const express = $('express')
+  const fetch = $('fetch')
 
   const slide = slideControl();
 
   const handleKeypress = () => {
+
+    if (slide.isActive()) {
+      monorepo.classList.add('on')
+    }
     if (slide.isActive()) {
       face.classList.add('on')
       luke.classList.add('on')
@@ -73,7 +110,65 @@
     if (slide.isActive()) {
       face.classList.remove('on')
       luke.classList.remove('on')
+      monorepo.classList.remove('on')
     }
+
+    if (slide.isActive()) {
+      react.classList.add('on')
+    }
+    if (slide.isActive()) {
+      face.classList.add('on')
+      luke.classList.add('on')
+    }
+    if (slide.isActive()) {}
+    if (slide.isActive()) {
+      face.classList.remove('on')
+      luke.classList.remove('on')
+      react.classList.remove('on')
+    }
+
+    if (slide.isActive()) {
+      compose.classList.add('on')
+    }
+    if (slide.isActive()) {
+      face.classList.add('on')
+      luke.classList.add('on')
+    }
+    if (slide.isActive()) {}
+    if (slide.isActive()) {
+      face.classList.remove('on')
+      luke.classList.remove('on')
+      compose.classList.remove('on')
+    }
+
+    if (slide.isActive()) {
+      express.classList.add('on')
+    }
+    if (slide.isActive()) {
+      face.classList.add('on')
+      luke.classList.add('on')
+    }
+    if (slide.isActive()) {}
+    if (slide.isActive()) {
+      face.classList.remove('on')
+      luke.classList.remove('on')
+      express.classList.remove('on')
+    }
+
+    if (slide.isActive()) {
+      fetch.classList.add('on')
+    }
+    if (slide.isActive()) {
+      face.classList.add('on')
+      luke.classList.add('on')
+    }
+    if (slide.isActive()) {}
+    if (slide.isActive()) {
+      face.classList.remove('on')
+      luke.classList.remove('on')
+      fetch.classList.remove('on')
+    }
+
     slide.reset();
   }
 
