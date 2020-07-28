@@ -1,0 +1,121 @@
+<%- include("ts-10xjs.svg")%>
+<script src="/slide-utils.js"></script>
+<style>
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  body > svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes grow {
+    0% {
+      opacity: 1;
+      transform: scale(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes shrink {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(0);
+    }
+  }
+
+
+  @keyframes shake {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: q;
+      transform: scale(1.5);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+
+  #ts, #js, #all {
+
+    transform-origin: center;
+    transform-box: fill-box;
+
+  }
+  #ts.on, #js.on {
+    opacity: 1;
+    animation: shake 1s steps(10, end);
+    animation-timing-function: ease-in-out;
+
+  }
+  #all.on
+  {
+    opacity: 1;
+    animation: grow 0.5s steps(10, end);
+    animation-timing-function: ease-in-out;
+
+  }
+
+  #all
+  {
+    opacity: 1;
+    animation: shrink 0.5s steps(10, end);
+    animation-timing-function: ease-in-out;
+  }
+
+</style>
+
+<script>
+window.onload = fixSvgSize;
+
+const ts = $('ts')
+const js = $('js')
+const all= $('all')
+
+const slide = slideControl();
+
+const handleKeypress = () => {
+  if (slide.isActive()) {
+    all.classList.add('on')
+  }
+
+  if (slide.isActive()) {
+    ts.classList.add('on')
+  }
+  if (slide.isActive()) {
+    ts.classList.remove('on')
+  }
+
+  if (slide.isActive()) {
+    js.classList.add('on')
+  }
+  if (slide.isActive()) {
+    js.classList.remove('on')
+  }
+
+  if (slide.isActive()) {
+    all.classList.remove('on')
+  }
+
+  slide.reset();
+}
+
+document.addEventListener('keypress', handleKeypress);
+setInterval(handleKeypress, 1500);
+</script>
